@@ -1,3 +1,4 @@
+import { AiFillGithub } from "react-icons/ai"
 import "./App.css";
 // import { Name } from './components/name';
 // import { Obj } from './components/obj';
@@ -18,6 +19,7 @@ const App = () => {
       <div className="main-div">
         <UserCard name={user1.name} age={user1.age} city={user1.city} />
         <Status isOnline={user1.status}/>
+        <AiFillGithub size={300}/>
       </div>
     </main>
   );
