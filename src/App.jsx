@@ -2,6 +2,7 @@
 import "./App.css";
 import { Status } from "./components/Status";
 import { UserCard } from "./components/UserCard";
+import { Counter } from "./components/count/counter";
 const user1 = {
   name: "Олена",
   age: 20,
@@ -13,19 +14,13 @@ const App = () => {
     <main className="main">
       <div className="main-div">
         <UserCard name={user1.name} age={user1.age} city={user1.city} />
-        <Status isOnline={user1.status}/>
-        <AiFillGithub size={300}/>
+         {/* <Status isOnline={user1.status}/>
+        <AiFillGithub size={300}/>  */}
+        <Counter/>
       </div>
     </main>
   );
 };
-// const colorPickerOptions = [
-//   { label: "red", color: "#F44336" },
-//   { label: "green", color: "#4CAF50" },
-//   { label: "blue", color: "#2196F3" },
-//   { label: "grey", color: "#607D8B" },
-//   { label: "pink", color: "#E91E63" },
-//   { label: "indigo", color: "#3F51B5" },
-// ];
+
 
 export default App;
