@@ -1,8 +1,9 @@
 
 import "./App.css";
-import { Status } from "./components/Status";
-import { UserCard } from "./components/UserCard";
-import { Counter } from "./components/count/counter";
+// import { Status } from "./components/Status";
+// import { UserCard } from "./components/UserCard";
+// import { Counter } from "./components/count/counter";
+import { DropDown } from "./components/DropDown/DropDown";
 const user1 = {
   name: "Олена",
   age: 20,
@@ -13,10 +14,11 @@ const App = () => {
   return (
     <main className="main">
       <div className="main-div">
-        <UserCard name={user1.name} age={user1.age} city={user1.city} />
+        <DropDown/>
+        {/* <UserCard name={user1.name} age={user1.age} city={user1.city} /> */}
          {/* <Status isOnline={user1.status}/>
         <AiFillGithub size={300}/>  */}
-        <Counter/>
+        {/* <Counter/> */}
       </div>
     </main>
   );
