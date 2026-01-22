@@ -1,11 +1,12 @@
 import React from "react";
 
 
-const Sticker = () =>{
+const Sticker = ({img, label}) =>{
     return (
         <li className="sticker">
-         <img src="" alt="sticker" />
-         <p className="text"> {}
+         <img src={img} alt="sticker" />
+         <p className="text"> 
+            {label}
          </p>
         </li>
     )

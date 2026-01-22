@@ -1,7 +1,8 @@
 
 import "./App.css";
 import { ColorOptions } from "./components/colorpicker/ColorOptions";
-import
+import StickerList from "./components/stickerpack/StickerList";
+import stickers from "./sticker.json"
 // import { Status } from "./components/Status";
 // import { UserCard } from "./components/UserCard";
 // import { Counter } from "./components/count/counter";
@@ -13,16 +14,17 @@ import
 //   status:true
 // }; 
 
-const colorPickerOptions = [
-  { label: 'red', color: '#F44336' },
-  { label: 'green', color: '#4CAF50' },
-  { label: 'blue', color: '#2196F3' },
-  { label: 'grey', color: '#607D8B' },
-  { label: 'pink', color: '#E91E63' },
-  { label: 'indigo', color: '#3F51B5' },
-];
+// const colorPickerOptions = [
+//   { label: 'red', color: '#F44336' },
+//   { label: 'green', color: '#4CAF50' },
+//   { label: 'blue', color: '#2196F3' },
+//   { label: 'grey', color: '#607D8B' },
+//   { label: 'pink', color: '#E91E63' },
+//   { label: 'indigo', color: '#3F51B5' },
+// ];
 
 const App = () => {
+  console.log(stickers)
   return (
     <main className="main">
       <div className="main-div">
@@ -31,8 +33,8 @@ const App = () => {
          {/* <Status isOnline={user1.status}/>
         <AiFillGithub size={300}/>  */}
         {/* <Counter/> */}
-        <ColorOptions options={colorPickerOptions}/>
-        
+        {/* // <ColorOptions options={colorPickerOptions}/> */}
+        <StickerList stickers={stickers}/>
       </div>
     </main>
   );
