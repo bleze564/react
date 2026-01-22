@@ -1,6 +1,7 @@
 
 import "./App.css";
 import { ColorOptions } from "./components/colorpicker/ColorOptions";
+import
 // import { Status } from "./components/Status";
 // import { UserCard } from "./components/UserCard";
 // import { Counter } from "./components/count/counter";
@@ -31,6 +32,7 @@ const App = () => {
         <AiFillGithub size={300}/>  */}
         {/* <Counter/> */}
         <ColorOptions options={colorPickerOptions}/>
+        
       </div>
     </main>
   );
