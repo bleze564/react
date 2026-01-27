@@ -24,11 +24,37 @@ import { Component } from "react";
 // ];
 
 class App extends Component {
+  state = {
+    name:'',
+    mail:''
+  }
+handleChange = (e) => {
+  const { name, value } = e.target;
+  this.setState({ [name]: value });
+}
+handleSubmit =(ev)=>{
+ev.preventDefault()
+thisSetS
+}
+
   render() {
     return (
       <main className="main">
         <div className="main-div">
-          <StickerList stickers={stickers} />
+          {/* <StickerList stickers={stickers} /> */}
+          <form>
+            <label>
+              {""}
+              Ім'я
+              <input onChange={this.handleChange} type="text" name="name" value={this.state.name} />
+            </label>
+            <hr />
+            <label>
+              {" "}
+              Електронна адреса
+              <input onChange={this.handleChange} type="email" name="mail" value={this.state.mail}/>
+            </label>
+          </form>
         </div>
       </main>
     );

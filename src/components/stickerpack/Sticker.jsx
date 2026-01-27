@@ -1,11 +1,11 @@
 import React from "react";
 
 class Sticker extends React.Component {
-  render(img, label) {
+  render() {
     return (
       <li className="sticker">
-        <img src={img} alt="sticker" />
-        <p className="text">{label}</p>
+        <img src={this.props.img} alt="sticker" />
+        <p className="text">{this.props.label}</p>
       </li>
     );
   }
