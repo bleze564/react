@@ -1,8 +1,8 @@
-
 import "./App.css";
 import { ColorOptions } from "./components/colorpicker/ColorOptions";
 import StickerList from "./components/stickerpack/StickerList";
-import stickers from "./sticker.json"
+import stickers from "./sticker.json";
+import { Component } from "react";
 // import { Status } from "./components/Status";
 // import { UserCard } from "./components/UserCard";
 // import { Counter } from "./components/count/counter";
@@ -12,7 +12,7 @@ import stickers from "./sticker.json"
 //   age: 20,
 //   city: "Львів",
 //   status:true
-// }; 
+// };
 
 // const colorPickerOptions = [
 //   { label: 'red', color: '#F44336' },
@@ -23,22 +23,16 @@ import stickers from "./sticker.json"
 //   { label: 'indigo', color: '#3F51B5' },
 // ];
 
-const App = () => {
-  console.log(stickers)
-  return (
-    <main className="main">
-      <div className="main-div">
-        {/* <DropDown/> */}
-        {/* <UserCard name={user1.name} age={user1.age} city={user1.city} /> */}
-         {/* <Status isOnline={user1.status}/>
-        <AiFillGithub size={300}/>  */}
-        {/* <Counter/> */}
-        {/* // <ColorOptions options={colorPickerOptions}/> */}
-        <StickerList stickers={stickers}/>
-      </div>
-    </main>
-  );
-};
-
+class App extends Component {
+  render() {
+    return (
+      <main className="main">
+        <div className="main-div">
+          <StickerList stickers={stickers} />
+        </div>
+      </main>
+    );
+  }
+}
 
 export default App;
