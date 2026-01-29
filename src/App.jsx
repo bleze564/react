@@ -27,6 +27,7 @@ class App extends Component {
   state = {
     name: "",
     mail: "",
+    expirence:""
   };
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,10 +72,10 @@ class App extends Component {
             <input  onChange={this.handleChange} type="radio" name="expirence" value='junior' checked = {this.state.expirence === 'junior'} />
           </label>
           <label> middle
-            <input onChange={this.handleChange} type="radio" name="expirence" value='middle' checked = {this.state.expirence === 'junior'}/>
+            <input onChange={this.handleChange} type="radio" name="expirence" value='middle' checked = {this.state.expirence === 'middle'}/>
           </label>
           <label> senior
-            <input onChange={this.handleChange} type="radio" name="expirence" value='senior' checked = {this.state.expirence === 'junior'}/>
+            <input onChange={this.handleChange} type="radio" name="expirence" value='senior' checked = {this.state.expirence === 'senior'}/>
           </label>
           </form>
         </div>
