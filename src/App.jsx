@@ -25,17 +25,17 @@ import { Component } from "react";
 
 class App extends Component {
   state = {
-    name:'',
-    mail:''
-  }
-handleChange = (e) => {
-  const { name, value } = e.target;
-  this.setState({ [name]: value });
-}
-handleSubmit =(ev)=>{
-ev.preventDefault()
-thisSetS
-}
+    name: "",
+    mail: "",
+  };
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+  handleSubmit = (ev) => {
+    ev.preventDefault();
+    thisSetS;
+  };
 
   render() {
     return (
@@ -46,14 +46,36 @@ thisSetS
             <label>
               {""}
               Ім'я
-              <input onChange={this.handleChange} type="text" name="name" value={this.state.name} />
+              <input
+                onChange={this.handleChange}
+                type=""
+                name="name"
+                value={this.state.name}
+              />
             </label>
             <hr />
             <label>
               {" "}
               Електронна адреса
-              <input onChange={this.handleChange} type="email" name="mail" value={this.state.mail}/>
+              <input
+                onChange={this.handleChange}
+                type="email"
+                name="mail"
+                value={this.state.mail}
+              />
             </label>
+            <hr />
+<b>Професійний рівень</b>
+          <hr />
+          <label> junior
+            <input  onChange={this.handleChange} type="radio" name="expirence" value='junior' checked = {this.state.expirence === 'junior'} />
+          </label>
+          <label> middle
+            <input onChange={this.handleChange} type="radio" name="expirence" value='middle' checked = {this.state.expirence === 'junior'}/>
+          </label>
+          <label> senior
+            <input onChange={this.handleChange} type="radio" name="expirence" value='senior' checked = {this.state.expirence === 'junior'}/>
+          </label>
           </form>
         </div>
       </main>
