@@ -39,6 +39,13 @@ class App extends Component {
     ev.preventDefault();
     thisSetS;
   };
+  componentDidUpdate(prevProps, prevstate){
+    if (prevState.todos !== this.state.todos){
+      console.log(this.state.todos) 
+      window.localStorage.setItem('todos', JSON.stringify(this.state.todos))
+      
+    }
+  }
 
   render() {
     return (
