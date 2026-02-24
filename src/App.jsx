@@ -89,7 +89,7 @@ class App extends Component {
 //           </form>
 //         </div>
 //       </main>
-<TodoList data={data}/>
+{/* <TodoList data={data}/> */}
 )}
 }
 
