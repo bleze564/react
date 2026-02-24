@@ -23,6 +23,7 @@ import { Component } from "react";
 //   { label: 'indigo', color: '#3F51B5' },
 // ];
 import data from "./todo.json"
+import { TodoEditor } from "./components/Todo/TodoEditor";
 class App extends Component {
   state = {
     name: "",
@@ -89,7 +90,8 @@ class App extends Component {
 //           </form>
 //         </div>
 //       </main>
-{/* <TodoList data={data}/> */}
+ <TodoList todos={this.state.todos} deleteToDo ={this.deleteToDo} toogleCompleted ={this.toogleCompleted}/> 
+ <TodoEditor addTodo={this.addTodo}/>
 )}
 }
 
