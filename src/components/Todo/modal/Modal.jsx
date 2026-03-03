@@ -1,21 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from "react";
 import { Backdrop, ModalContent } from "./Modal.styled";
 
-export class Modal extends Component {
+export function Modal({ children, onClose }) {
+  useEffect(() => {
+    window.addEventListener("keydown", (ev) => {
+      if (ev.code === "Escape") {
+        onClose();
+      }
+    });
+    return () => {window.removeEventListener("keydown", (ev) => {
+      if (ev.code === "Escape") {
+        onClose();
 
-    componentDidMount(){
-      window.addEventListener('keydown', (ev)=>{
-        if(ev.code === 'Escape'){
-          this.props.onClose()
-        }
-      })
+    }})}
+  }, [onClose]);
+  const handleBackdropClick = (ev) => {
+    if (event.currentTarget === event.target) {
+      onClose();
     }
-
-  render() {
-    return (
-      <Backdrop onClick={this.handleBackdropClick}>
-        <ModalContent>{this.props.children}</ModalContent>
-      </Backdrop>
-    );
-  }
+  };
+  return (
+    <Backdrop onClick={handleBackdropClick}>
+      <ModalContent>{children}</ModalContent>
+    </Backdrop>
+  );
 }
