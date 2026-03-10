@@ -2,8 +2,8 @@ import "./App.css";
 import { ColorOptions } from "./components/colorpicker/ColorOptions";
 import StickerList from "./components/stickerpack/StickerList";
 import stickers from "./sticker.json";
-import { Component } from "react";
-import initialTodos from "./todo.json"
+import { Component, useState } from "react";
+import initialTodos from "./todo.json";
 // import { Status } from "./components/Status";
 // import { UserCard } from "./components/UserCard";
 // import { Counter } from "./components/count/counter";
@@ -26,6 +26,8 @@ import initialTodos from "./todo.json"
 import data from "./todo.json";
 import { TodoEditor } from "./components/Todo/TodoEditor";
 import { TodoList } from "./components/Todo/TodoList";
+import { PokemonsForm } from "./components/pokemons/pokemonsform";
+
 class App extends Component {
   state = {
     name: "",
@@ -34,23 +36,42 @@ class App extends Component {
     todos: initialTodos,
     filter: "",
   };
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
-  handleSubmit = (ev) => {
-    ev.preventDefault();
-    thisSetS;
-  };
+  const [value, setValue] = useState('')
+  // handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   this.setState({ [name]: value });
+  // };
+  // handleSubmit = (ev) => {
+  //   ev.preventDefault();
+  //   thisSetS;
+  // };
   componentDidUpdate(prevProps, prevstate) {
     if (prevState.todos !== this.state.todos) {
       console.log(this.state.todos);
       window.localStorage.setItem("todos", JSON.stringify(this.state.todos));
     }
   }
-
+  addTodo = (value) => {
+    const newTodo = {
+      id: new Date(),
+      text: value,
+      completed: true,
+    };
+    this.setState((prevState) => {
+      return {
+        todos: [newTodo, ...prevState.todos],
+      };
+    });
+  };
+  // дописати методи addtodo deletetodo togletodo
   render() {
+    const [pokemonName, setPOkemonName] = useState('')
+          const ChangePokemonName = (name)=>{
+            setPOkemonName(name)
+          }
     return (
+     <div><PokemonsForm setPOkemonName={setPOkemonName} /></div>
+    
       //       <main className="main">
       //         <div className="main-div">
       //           {/* <StickerList stickers={stickers} /> */}
@@ -91,15 +112,17 @@ class App extends Component {
       //           </form>
       //         </div>
       //       </main>
-      <div>
-        {" "}
+      
+      /* {" "}
         <TodoList
           todos={this.state.todos}
           deleteToDo={this.deleteToDo}
           toogleCompleted={this.toogleCompleted}
         />
-        <TodoEditor addTodo={this.addTodo} />
-      </div>
+        <TodoEditor addTodo={this.addTodo} /> */
+        
+
+
     );
   }
 }

@@ -24,7 +24,7 @@ export class TodoList extends React.Component {
                 <button
                   type="button"
                   onClick={(event) => {
-                    console.log.deleteToDo(obj.id);
+                    this.props.deleteToDo(obj.id);
                   }}
                 >
                   Delete ToDo
