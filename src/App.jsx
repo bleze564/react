@@ -2,7 +2,7 @@ import "./App.css";
 import { ColorOptions } from "./components/colorpicker/ColorOptions";
 import StickerList from "./components/stickerpack/StickerList";
 import stickers from "./sticker.json";
-import { Component, useState } from "react";
+import { Component, useState, useEffect} from "react";
 import initialTodos from "./todo.json";
 // import { Status } from "./components/Status";
 // import { UserCard } from "./components/UserCard";
@@ -27,16 +27,30 @@ import data from "./todo.json";
 import { TodoEditor } from "./components/Todo/TodoEditor";
 import { TodoList } from "./components/Todo/TodoList";
 import { PokemonsForm } from "./components/pokemons/pokemonsform";
+import { fetchPokemonByNames } from "./components/pokemons/PokemonsApi";
+import { PokemonInfo } from "./components/pokemons/pokemonsinfo";
 
-class App extends Component {
-  state = {
-    name: "",
-    mail: "",
-    expirence: "",
-    todos: initialTodos,
-    filter: "",
+function App() {
+  // state = {
+  //   name: "",
+  //   mail: "",
+  //   expirence: "",
+  //   todos: initialTodos,
+  //   filter: "",
+  // };
+  const [pokemon, setPokemon] = useState('')
+  const [pokemonName, setPOkemonName] = useState("");
+  const ChangePokemonName = (name) => {
+    setPOkemonName(name);
   };
-  const [value, setValue] = useState('')
+  useEffect(() => {
+    fetchPokemonByNames(pokemonName).then((pokemon) => {
+      console.log
+      setPokemon(pokemon)
+    });
+  }, [pokemonName]);
+  const [value, setValue] = useState("");
+
   // handleChange = (e) => {
   //   const { name, value } = e.target;
   //   this.setState({ [name]: value });
@@ -45,86 +59,81 @@ class App extends Component {
   //   ev.preventDefault();
   //   thisSetS;
   // };
-  componentDidUpdate(prevProps, prevstate) {
-    if (prevState.todos !== this.state.todos) {
-      console.log(this.state.todos);
-      window.localStorage.setItem("todos", JSON.stringify(this.state.todos));
-    }
-  }
-  addTodo = (value) => {
-    const newTodo = {
-      id: new Date(),
-      text: value,
-      completed: true,
-    };
-    this.setState((prevState) => {
-      return {
-        todos: [newTodo, ...prevState.todos],
-      };
-    });
-  };
+  // componentDidUpdate(prevProps, prevstate) {
+  //   if (prevState.todos !== this.state.todos) {
+  //     console.log(this.state.todos);
+  //     window.localStorage.setItem("todos", JSON.stringify(this.state.todos));
+  //   }
+  // }
+  // addTodo = (value) => {
+  //   const newTodo = {
+  //     id: new Date(),
+  //     text: value,
+  //     completed: true,
+  //   };
+  //   this.setState((prevState) => {
+  //     return {
+  //       todos: [newTodo, ...prevState.todos],
+  //     };
+  //   });
+  // };
   // дописати методи addtodo deletetodo togletodo
-  render() {
-    const [pokemonName, setPOkemonName] = useState('')
-          const ChangePokemonName = (name)=>{
-            setPOkemonName(name)
-          }
-    return (
-     <div><PokemonsForm setPOkemonName={setPOkemonName} /></div>
-    
-      //       <main className="main">
-      //         <div className="main-div">
-      //           {/* <StickerList stickers={stickers} /> */}
-      //           <form>
-      //             <label>
-      //               {""}
-      //               Ім'я
-      //               <input
-      //                 onChange={this.handleChange}
-      //                 type=""
-      //                 name="name"
-      //                 value={this.state.name}
-      //               />
-      //             </label>
-      //             <hr />
-      //             <label>
-      //               {" "}
-      //               Електронна адреса
-      //               <input
-      //                 onChange={this.handleChange}
-      //                 type="email"
-      //                 name="mail"
-      //                 value={this.state.mail}
-      //               />
-      //             </label>
-      //             <hr />
-      // <b>Професійний рівень</b>
-      //           <hr />
-      //           <label> junior
-      //             <input  onChange={this.handleChange} type="radio" name="expirence" value='junior' checked = {this.state.expirence === 'junior'} />
-      //           </label>
-      //           <label> middle
-      //             <input onChange={this.handleChange} type="radio" name="expirence" value='middle' checked = {this.state.expirence === 'middle'}/>
-      //           </label>
-      //           <label> senior
-      //             <input onChange={this.handleChange} type="radio" name="expirence" value='senior' checked = {this.state.expirence === 'senior'}/>
-      //           </label>
-      //           </form>
-      //         </div>
-      //       </main>
-      
-      /* {" "}
+
+  return (
+    <div>
+      <PokemonInfo pokemon={pokemon}/>
+      <PokemonsForm addPokemonName={ChangePokemonName} />
+    </div>
+
+    //       <main className="main">
+    //         <div className="main-div">
+    //           {/* <StickerList stickers={stickers} /> */}
+    //           <form>
+    //             <label>
+    //               {""}
+    //               Ім'я
+    //               <input
+    //                 onChange={this.handleChange}
+    //                 type=""
+    //                 name="name"
+    //                 value={this.state.name}
+    //               />
+    //             </label>
+    //             <hr />
+    //             <label>
+    //               {" "}
+    //               Електронна адреса
+    //               <input
+    //                 onChange={this.handleChange}
+    //                 type="email"
+    //                 name="mail"
+    //                 value={this.state.mail}
+    //               />
+    //             </label>
+    //             <hr />
+    // <b>Професійний рівень</b>
+    //           <hr />
+    //           <label> junior
+    //             <input  onChange={this.handleChange} type="radio" name="expirence" value='junior' checked = {this.state.expirence === 'junior'} />
+    //           </label>
+    //           <label> middle
+    //             <input onChange={this.handleChange} type="radio" name="expirence" value='middle' checked = {this.state.expirence === 'middle'}/>
+    //           </label>
+    //           <label> senior
+    //             <input onChange={this.handleChange} type="radio" name="expirence" value='senior' checked = {this.state.expirence === 'senior'}/>
+    //           </label>
+    //           </form>
+    //         </div>
+    //       </main>
+
+    /* {" "}
         <TodoList
           todos={this.state.todos}
           deleteToDo={this.deleteToDo}
           toogleCompleted={this.toogleCompleted}
         />
         <TodoEditor addTodo={this.addTodo} /> */
-        
-
-
-    );
-  }
+  );
 }
 
 export default App;

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-export function PokemonsForm() {
+export function PokemonsForm({addPokemonName}) {
   const [pokemonName, setpokemonName] = useState("");
 
   function handleSubmit() {
     e.preventdefault;
     addPokemonName(pokemonName);
+    event.preventdefault()
   }
   function handleChange() {
     setpokemonName(event.target.value);
