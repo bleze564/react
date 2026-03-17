@@ -2,7 +2,7 @@ import "./App.css";
 import { ColorOptions } from "./components/colorpicker/ColorOptions";
 import StickerList from "./components/stickerpack/StickerList";
 import stickers from "./sticker.json";
-import { Component, useState, useEffect} from "react";
+import { Component, useState, useEffect } from "react";
 import initialTodos from "./todo.json";
 // import { Status } from "./components/Status";
 // import { UserCard } from "./components/UserCard";
@@ -27,8 +27,9 @@ import data from "./todo.json";
 import { TodoEditor } from "./components/Todo/TodoEditor";
 import { TodoList } from "./components/Todo/TodoList";
 import { PokemonsForm } from "./components/pokemons/pokemonsform";
-import { fetchPokemonByNames } from "./components/pokemons/PokemonsApi";
+import { fetchPokemonByName } from "./components/pokemons/PokemonsApi";
 import { PokemonInfo } from "./components/pokemons/pokemonsinfo";
+import constructWithOptions from "styled-components/dist/constructors/constructWithOptions";
 
 function App() {
   // state = {
@@ -38,17 +39,27 @@ function App() {
   //   todos: initialTodos,
   //   filter: "",
   // };
-  const [pokemon, setPokemon] = useState('')
+  const [pokemon, setPokemon] = useState(null);
   const [pokemonName, setPOkemonName] = useState("");
+  const [error, setError] = useState("");
+  const[loading, setLoading] =useState("")
   const ChangePokemonName = (name) => {
     setPOkemonName(name);
   };
   useEffect(() => {
-    fetchPokemonByNames(pokemonName).then((pokemon) => {
-      console.log
-      setPokemon(pokemon)
-    });
+    if (!pokemonName) {
+      return;
+    } 
+    fetchPokemonByName(pokemonName)
+      .then((pokemon) => {
+        setPokemon(pokemon);
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   }, [pokemonName]);
+  if (error) return <p>{error}</p>;
+
   const [value, setValue] = useState("");
 
   // handleChange = (e) => {
@@ -78,10 +89,10 @@ function App() {
   //   });
   // };
   // дописати методи addtodo deletetodo togletodo
-
+  console.log(pokemon);
   return (
     <div>
-      <PokemonInfo pokemon={pokemon}/>
+      <PokemonInfo pokemon={pokemon} error={error}/>
       <PokemonsForm addPokemonName={ChangePokemonName} />
     </div>
 

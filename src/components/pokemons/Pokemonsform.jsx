@@ -3,12 +3,11 @@ import React, { useState } from "react";
 export function PokemonsForm({addPokemonName}) {
   const [pokemonName, setpokemonName] = useState("");
 
-  function handleSubmit() {
-    e.preventdefault;
+  function handleSubmit(e) {
+    e.preventDefault();
     addPokemonName(pokemonName);
-    event.preventdefault()
   }
-  function handleChange() {
+  function handleChange(event) {
     setpokemonName(event.target.value);
   }
   return (
